@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ | 若草探求</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    
+    <header id="main-header">
+        <div class="header-inner">
+            <a href="index.html" class="site-logo">若草探求</a>
+            
+            <nav id="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html#projects">探究テーマ一覧</a></li>
+                    <li><a href="news.html">ニュース・お知らせ</a></li>
+                    <li><a href="about.html">若草探求とは</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
+                </ul>
+            </nav>
+            
+            <button id="menu-toggle" class="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>お問い合わせ</h1>
+                <p>生徒たちへの提言、取材依頼、地域連携に関するご相談はこちらから。</p>
+            </div>
+        </section>
+        
+        <section id="contact-form-detail" class="form-section">
+            <div class="container">
+                
+                <p class="section-description">
+                    以下のフォームに必要事項をご記入の上、送信してください。生徒たちの探究活動に対する貴重なフィードバックをお待ちしております。
+                </p>
+
+                <form action="/submit-form-endpoint" method="POST" class="contact-form">
+                    
+                    <div class="form-group">
+                        <label for="name">お名前 <span class="required">必須</span></label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">メールアドレス <span class="required">必須</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">件名</label>
+                        <select id="subject" name="subject">
+                            <option value="提言・フィードバック">探究テーマへの提言・フィードバック</option>
+                            <option value="連携・協力">地域連携・協業のお誘い</option>
+                            <option value="取材">取材に関するお問い合わせ</option>
+                            <option value="その他">その他</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">メッセージ本文 <span class="required">必須</span></label>
+                        <textarea id="message" name="message" rows="8" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">送信する</button>
+
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 若草中学校 若草探求プロジェクト. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="about.html">本プロジェクトについて</a> |
+                <a href="contact.html">お問い合わせ</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        
+        // ハンバーガーメニューの開閉機能
+        menuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('is-open');
+            this.classList.toggle('is-active');
+            document.body.classList.toggle('no-scroll');
+        });
+
+        // メニューリンククリック時の自動クローズ機能
+        const navLinks = mainNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('is-open')) {
+                    mainNav.classList.remove('is-open');
+                    menuToggle.classList.remove('is-active');
+                    document.body.classList.remove('no-scroll');
+                }
+            });
+        });
+        
+        // 注: contact.htmlにはカルーセルがないため、カルーセル用のJSは含めていません。
+    </script>
+</body>
+</html>

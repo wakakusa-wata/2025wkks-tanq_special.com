@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ニュース・お知らせ | 若草探求</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    
+    <header id="main-header">
+        <div class="header-inner">
+            <a href="/" class="site-logo">若草探求</a>
+            
+            <nav id="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html#projects">探究テーマ一覧</a></li>
+                    <li><a href="news.html">ニュース・お知らせ</a></li>
+                    <li><a href="about.html">若草探求とは</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
+                </ul>
+            </nav>
+            
+            <button id="menu-toggle" class="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>ニュース・お知らせ</h1>
+                <p>若草探求プロジェクトの最新情報やイベント告知をお伝えします。</p>
+            </div>
+        </section>
+        
+        <section id="news-archive" class="news-section">
+            <div class="container">
+                
+                <ul class="news-list">
+                    <li class="news-item">
+                        <a href="/news/detail-010.html">
+                            <time datetime="2025-10-03">2025.10.03</time>
+                            <span class="category type-progress">進捗</span> 
+                            <p class="news-title">探究活動の最終フェーズへ移行！提言のまとめ作業を開始</p>
+                        </a>
+                    </li>
+                    
+                    <li class="news-item">
+                        <a href="/news/detail-009.html">
+                            <time datetime="2025-06-27">2025.06.27</time>
+                            <span class="category type-event">イベント</span>
+                            <p class="news-title">「プロのプレゼン出張授業」を実施しました。</p>
+                        </a>
+                    </li>
+                    
+                    <li class="news-item">
+                        <a href="/news/detail-001.html">
+                            <time datetime="2025-09-01">2025.09.01</time>
+                            <span class="category type-info">一般</span>
+                            <p class="news-title">若草探求 特設サイトを公開いたしました。</p>
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="pagination">
+                    <span class="current">1</span>
+                    <a href="news-page2.html">2</a>
+                    <a href="news-page3.html">3</a>
+                    <a href="news-page2.html" class="next">次へ &raquo;</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 若草中学校 若草探求プロジェクト. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="about.html">本プロジェクトについて</a> |
+                <a href="contact.html">お問い合わせ</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        
+        // ハンバーガーメニューの開閉機能
+        menuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('is-open');
+            this.classList.toggle('is-active');
+            document.body.classList.toggle('no-scroll');
+        });
+
+        // メニューリンククリック時の自動クローズ機能
+        const navLinks = mainNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('is-open')) {
+                    mainNav.classList.remove('is-open');
+                    menuToggle.classList.remove('is-active');
+                    document.body.classList.remove('no-scroll');
+                }
+            });
+        });
+        
+        // 注: news.htmlにはカルーセルがないため、カルーセル用のJSは含めていません。
+    </script>
+</body>
+</html>

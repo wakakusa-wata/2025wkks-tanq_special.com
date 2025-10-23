@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>若草探求とは | 若草探求</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    
+    <header id="main-header">
+        <div class="header-inner">
+            <a href="index.html" class="site-logo">若草探求</a>
+            
+            <nav id="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html#projects">探究テーマ一覧</a></li> 
+                    <li><a href="news.html">ニュース・お知らせ</a></li>
+                    <li><a href="about.html">若草探求とは</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
+                </ul>
+            </nav>
+            
+            <button id="menu-toggle" class="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>若草探求とは</h1>
+                <p>地域を学び、未来を創る。本プロジェクトの理念と活動内容をご紹介します。</p>
+            </div>
+        </section>
+        
+        <section id="about-detail" class="about-section detail-page-content">
+            <div class="container">
+                
+                <div class="about-content-wrapper">
+                    
+                    <div class="about-text">
+                        <h2>探究学習の理念と若草中学校の先進性</h2>
+                        
+                        <p class="lead-text">
+                            **地域課題に挑み、自ら未来を切り拓く知性を育む。**
+                        </p>
+                        
+                        <p>
+                            若草中学校の探究学習は、従来の受動的な教育の枠を超え、生徒一人ひとりが**地域社会の「問い」**を主体的に設定することから始まります。奈良市という歴史と現代が交差するフィールドを舞台に、生徒たちは自らの興味に基づき、深いリサーチと分析を行います。
+                        </p>
+                        <p>
+                            このプロセスを通じて、単なる知識の蓄積ではなく、**クリティカル・シンキング**と**問題解決能力**という、グローバル社会で必須のスキルを習得します。私たちは、この学習が地域の未来に対する彼らの**責任感**を醸成すると確信しています。
+                        </p>
+                        
+                        <h3>学習テーマの多様性</h3>
+                        <p>
+                            経済、文化財保護、環境問題、都市計画など、生徒が選ぶテーマは多岐にわたります。この自由な選択こそが、学習への**深いコミットメント**を生み出します。
+                        </p>
+                        
+                        <a href="#" class="more-info-button">学校の探究学習カリキュラムを見る &raquo;</a>
+
+                    </div>
+                    
+                    <div class="about-image-placeholder">
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 若草中学校 若草探求プロジェクト. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="about.html">本プロジェクトについて</a> |
+                <a href="contact.html">お問い合わせ</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        
+        // ハンバーガーメニューの開閉機能
+        menuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('is-open');
+            this.classList.toggle('is-active');
+            document.body.classList.toggle('no-scroll');
+        });
+
+        // メニューリンククリック時の自動クローズ機能
+        const navLinks = mainNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('is-open')) {
+                    mainNav.classList.remove('is-open');
+                    menuToggle.classList.remove('is-active');
+                    document.body.classList.remove('no-scroll');
+                }
+            });
+        });
+        
+        // 注: about.htmlにはカルーセルがないため、カルーセル用のJSは含めていません。
+    </script>
+</body>
+</html>
