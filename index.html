@@ -8,46 +8,21 @@
     <link rel="stylesheet" href="style .css"> 
 </head>
 <body>
-    
-    <header id="main-header">
-        <div class="header-inner">
-            <a href="index.html" class="site-logo">若草探求</a>
-            
-            <nav id="main-nav">
-                <ul class="nav-links">
-                    <li><a href="#projects">探究テーマ一覧</a></li>
-                    <li><a href="news.html">ニュース・お知らせ</a></li>
-                    <li><a href="about.html">若草探求とは</a></li>
-                    <li><a href="conect.html">お問い合わせ</a></li> 
-                </ul>
-            </nav>
-            
-            <button id="menu-toggle" class="hamburger-menu">
-                <main>
+<main>
     <section id="hero" class="hero-section">
-        
         <div class="slideshow-container">
             <div class="hero-slide active" style="background-image: url('images/hero-slide-1.jpg');"></div>
             <div class="hero-slide" style="background-image: url('images/hero-slide-2.jpg');"></div>
             <div class="hero-slide" style="background-image: url('images/hero-slide-3.jpg');"></div>
         </div>
-    </section>
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
+        <div class="hero-content">
+            <h1>若草探求</h1>
+            <p>地域課題に挑む、未来の知性たち</p>
+            <a href="#projects" class="cta-button">探究テーマを見る</a>
         </div>
-    </header>
-
-    <main>
-        <section id="hero" class="hero-section">
-            <div class="hero-content">
-                <h1>若草探求</h1>
-                <p>地域課題に挑む、未来の知性たち</p>
-                <a href="#projects" class="cta-button">探究テーマを見る</a>
-            </div>
-        </section>
-        
+    </section>
+    
+    </main>
         <section id="projects" class="projects-section">
             <div class="container">
                 <h2>若草探求プロジェクト</h2>
@@ -170,40 +145,97 @@
         </div>
     </footer>
 
-    <script>
-        // index.html の </body> の直前に、既存のカルーセルJSの後に追記
+<script>
+        // ⬇️ 既存のJSコードの順序を整理し、途切れた行を修正 ⬇️
 
-// ヒーロースライドショー機能
-function startHeroSlideshow() {
-    const slides = document.querySelectorAll('.hero-slide');
-    let currentSlide = 0;
-    const intervalTime = 5000; // 5秒ごとに切り替え
+        // ヒーロースライドショー機能
+        function startHeroSlideshow() {
+            const slides = document.querySelectorAll('.hero-slide');
+            let currentSlide = 0;
+            const intervalTime = 5000; // 5秒ごとに切り替え
 
-    function nextSlide() {
-        // 現在のスライドを非表示
-        slides[currentSlide].classList.remove('active');
-        
-        // 次のスライドへ
-        currentSlide = (currentSlide + 1) % slides.length;
-        
-        // 次のスライドを表示
-        slides[currentSlide].classList.add('active');
-    }
+            function nextSlide() {
+                if (slides.length === 0) return;
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
 
-    // ページロード時に最初のスライドを表示
-    if (slides.length > 0) {
-        slides[0].classList.add('active');
-        // タイマーを開始
-        setInterval(nextSlide, intervalTime);
-    }
-}
+            if (slides.length > 1) {
+                slides[0].classList.add('active');
+                setInterval(nextSlide, intervalTime);
+            }
+        }
 
-// ページが完全に読み込まれた後に実行
-document.addEventListener('DOMContentLoaded', startHeroSlideshow);
         const menuToggle = document.getElementById('menu-toggle');
         const mainNav = document.getElementById('main-nav');
+        
         // ハンバーガーメニューの開閉機能
         menuToggle.addEventListener('click', function() {
             mainNav.classList.toggle('is-open');
             this.classList.toggle('is-active');
-            document.body.classList.toggle('no
+            // ★★ 修正箇所 ★★
+            document.body.classList.toggle('no-scroll'); // 'no-scroll'クラスのトグルを完了
+        });
+
+        // メニューリンククリック時の自動クローズ機能
+        // ... (この下に既存のJSが続きます) ...
+        
+        // ページが完全に読み込まれた後に実行
+        document.addEventListener('DOMContentLoaded', () => {
+             // ヒーロースライドショーの実行
+            startHeroSlideshow();
+            
+            // 既存のカルーセルJSのコード（`const carousel = document.getElementById('project-carousel');`から始まる部分）をここに続けてください。
+            
+             const navLinks = mainNav.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mainNav.classList.contains('is-open')) {
+                        mainNav.classList.remove('is-open');
+                        menuToggle.classList.remove('is-active');
+                        document.body.classList.remove('no-scroll');
+                    }
+                });
+            });
+
+            // スライドショー機能の実行（startHeroSlideshowはDOMContentLoadedの最後に移動しました）
+
+            // カルーセル機能の実行
+            const carousel = document.getElementById('project-carousel');
+            const prevButton = document.querySelector('.carousel-nav.prev');
+            const nextButton = document.querySelector('.carousel-nav.next');
+
+            // 1枚のスライドの幅 (CSS: 300px + 30px)
+            const cardWidth = 330;  
+            let currentPosition = 0;
+
+            // 前へボタンの処理
+            prevButton.addEventListener('click', () => {
+                currentPosition += cardWidth;
+                if (currentPosition > 0) {
+                    currentPosition = 0;
+                }
+                carousel.style.transform = `translateX(${currentPosition}px)`;
+            });
+
+            // 次へボタンの処理
+            nextButton.addEventListener('click', () => {
+                const carouselWidth = carousel.scrollWidth;  
+                const wrapperWidth = carousel.parentElement.clientWidth;  
+
+                currentPosition -= cardWidth;
+                
+                const maxScroll = wrapperWidth - carouselWidth;
+
+                if (currentPosition < maxScroll) {
+                    currentPosition = maxScroll;
+                }
+
+                carousel.style.transform = `translateX(${currentPosition}px)`;
+            });
+        });
+
+    </script>
+</body>
+</html>
