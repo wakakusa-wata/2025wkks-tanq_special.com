@@ -588,3 +588,48 @@ main {
     text-align: center;
     margin-top: 30px;
 }
+/* ================================================= */
+/* ヒーロースライドショーの追加スタイル */
+/* ================================================= */
+
+.slideshow-container {
+    /* 親の.hero-section全体を覆うように絶対配置 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 画像とテキストのコントラストを保つための半透明のオーバーレイ */
+    background: rgba(230, 255, 230, 0.5); /* 薄い若草色のオーバーレイ */
+}
+
+.hero-slide {
+    /* 全てのスライドを重ねて配置 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* 最初は全て非表示 */
+    transition: opacity 1.5s ease-in-out; /* フェードアニメーション */
+    
+    /* 背景画像の設定 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* オーバーレイのグラデーション（slideshow-containerと合成） */
+    background-blend-mode: overlay; 
+}
+
+.hero-slide.active {
+    opacity: 1; /* 表示中のスライドのみ不透明にする */
+}
+
+/* ヒーローコンテンツ（文字）を画像より前面に表示 */
+.hero-content {
+    position: relative;
+    z-index: 10; /* 画像（z-index: 1）よりも上に表示 */
+    color: #1e1e1e; /* 文字が画像にかぶっても読めるように */
+}
+
