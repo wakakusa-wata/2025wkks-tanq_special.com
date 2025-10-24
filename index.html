@@ -32,34 +32,6 @@
             <div class="hero-slide" style="background-image: url('images/hero-slide-3.jpg');"></div>
         </div>
     </section>
-    ```
-
-* **注**: 画像は`images`フォルダに入っているものと仮定しています。GitHubに`images`フォルダを作成し、`hero-slide-1.jpg`、`hero-slide-2.jpg`、`hero-slide-3.jpg`という名前で画像をアップロードしてください。
-
----
-
-## 2. CSS (`style.css`) の修正
-
-既存の`.hero-section`のスタイルを活かしつつ、画像が重なって見えるように`position: absolute`で配置します。
-
-### A. 既存の `.hero-section` をリセット
-
-以前のCSSで設定した**`background-image`**、**`background-color`**、**`background-blend-mode`**の設定は不要になるので、削除またはコメントアウトしてください。
-
-```css
-.hero-section {
-    height: 80vh; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* position: relative; を追加！ */
-    position: relative; /* 子要素の絶対配置の基準にする */
-    /* 以前の background 設定を削除/コメントアウト */
-    /* background: linear-gradient(135deg, #f0fff0, #e6ffe6); */
-    text-align: center;
-    padding: 0 20px;
-    overflow: hidden; /* 画像がはみ出さないように */
-}
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
