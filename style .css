@@ -38,10 +38,24 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* 奈良の自然を思わせる淡い若草色のグラデーション */
-    background: linear-gradient(135deg, #f0fff0, #e6ffe6); 
     text-align: center;
     padding: 0 20px;
+    
+    /* ======== ここから追加・修正 ======== */
+    /* 1. 背景画像を設定 (ファイル名: hero-background.jpg を使用) */
+    background-image: url('hero-background.jpg'); 
+    
+    /* 2. 画像がセクション全体を覆うように設定 */
+    background-size: cover; 
+    
+    /* 3. 画像の位置を中央に設定 */
+    background-position: center center; 
+    
+    /* 4. 画像と文字の視認性を高めるため、半透明の若草色オーバーレイを追加 */
+    /* 既存のグラデーションに rgba() を使って透明度を持たせ、画像を透けさせる */
+    background-color: rgba(230, 255, 230, 0.6); /* 薄い若草色を背景に設定 */
+    background-blend-mode: overlay; /* 背景画像と背景色を合成 */
+    /* ======== ここまで追加・修正 ======== */
 }
 
 /* コンテンツの中央配置とタイポグラフィの調整 */
