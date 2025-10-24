@@ -171,87 +171,94 @@
     </footer>
 
 <script>
-        // ヒーロースライドショー機能
-        function startHeroSlideshow() {
-            const slides = document.querySelectorAll('.hero-slide');
-            let currentSlide = 0;
-            const intervalTime = 5000; // 5秒ごとに切り替え
+    // ヒーロースライドショー機能
+    function startHeroSlideshow() {
+        const slides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+        const intervalTime = 5000; // 5秒ごとに切り替え
 
-            function nextSlide() {
-                if (slides.length === 0) return;
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
-            }
+        // スライドがない場合は処理を終了
+        if (slides.length === 0) return;
 
-            if (slides.length > 1) {
-                slides[0].classList.add('active');
-                setInterval(nextSlide, intervalTime);
-            }
+        // ★★ 修正箇所: すべてのactiveクラスをリセットし、JS側で初期スライドを設定する ★★
+        // この処理で、スライドショー開始時にtanq-1.pngが確実に表示されます。
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[currentSlide].classList.add('active'); 
+        // ----------------------------------------------------------------------
+
+        function nextSlide() {
+            if (slides.length === 0) return;
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
         }
 
-        const menuToggle = document.getElementById('menu-toggle');
-        const mainNav = document.getElementById('main-nav');
+        if (slides.length > 1) {
+            setInterval(nextSlide, intervalTime);
+        }
+    }
+
+    const menuToggle = document.getElementById('menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+    
+    // ハンバーガーメニューの開閉機能
+    menuToggle.addEventListener('click', function() {
+        mainNav.classList.toggle('is-open');
+        this.classList.toggle('is-active');
+        document.body.classList.toggle('no-scroll'); 
+    });
+
+    // ページが完全に読み込まれた後に実行
+    document.addEventListener('DOMContentLoaded', () => {
+        // ヒーロースライドショーの実行
+        startHeroSlideshow();
         
-        // ハンバーガーメニューの開閉機能
-        menuToggle.addEventListener('click', function() {
-            mainNav.classList.toggle('is-open');
-            this.classList.toggle('is-active');
-            document.body.classList.toggle('no-scroll'); 
+        // ナビゲーションリンククリック時の自動クローズ
+        const navLinks = mainNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('is-open')) {
+                    mainNav.classList.remove('is-open');
+                    menuToggle.classList.remove('is-active');
+                    document.body.classList.remove('no-scroll');
+                }
+            });
         });
 
-        // ページが完全に読み込まれた後に実行
-        document.addEventListener('DOMContentLoaded', () => {
-             // ヒーロースライドショーの実行
-            startHeroSlideshow();
+        // カルーセル機能の実行
+        const carousel = document.getElementById('project-carousel');
+        const prevButton = document.querySelector('.carousel-nav.prev');
+        const nextButton = document.querySelector('.carousel-nav.next');
+
+        // 1枚のスライドの幅 (CSS: 300px + 30px)
+        const cardWidth = 330;  
+        let currentPosition = 0;
+
+        // 前へボタンの処理
+        prevButton.addEventListener('click', () => {
+            currentPosition += cardWidth;
+            if (currentPosition > 0) {
+                currentPosition = 0;
+            }
+            carousel.style.transform = `translateX(${currentPosition}px)`;
+        });
+
+        // 次へボタンの処理
+        nextButton.addEventListener('click', () => {
+            const carouselWidth = carousel.scrollWidth;  
+            const wrapperWidth = carousel.parentElement.clientWidth;  
+
+            currentPosition -= cardWidth;
             
-            // ナビゲーションリンククリック時の自動クローズ
-            const navLinks = mainNav.querySelectorAll('a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (mainNav.classList.contains('is-open')) {
-                        mainNav.classList.remove('is-open');
-                        menuToggle.classList.remove('is-active');
-                        document.body.classList.remove('no-scroll');
-                    }
-                });
-            });
+            const maxScroll = wrapperWidth - carouselWidth;
 
-            // カルーセル機能の実行
-            const carousel = document.getElementById('project-carousel');
-            const prevButton = document.querySelector('.carousel-nav.prev');
-            const nextButton = document.querySelector('.carousel-nav.next');
+            if (currentPosition < maxScroll) {
+                currentPosition = maxScroll;
+            }
 
-            // 1枚のスライドの幅 (CSS: 300px + 30px)
-            const cardWidth = 330;  
-            let currentPosition = 0;
-
-            // 前へボタンの処理
-            prevButton.addEventListener('click', () => {
-                currentPosition += cardWidth;
-                if (currentPosition > 0) {
-                    currentPosition = 0;
-                }
-                carousel.style.transform = `translateX(${currentPosition}px)`;
-            });
-
-            // 次へボタンの処理
-            nextButton.addEventListener('click', () => {
-                const carouselWidth = carousel.scrollWidth;  
-                const wrapperWidth = carousel.parentElement.clientWidth;  
-
-                currentPosition -= cardWidth;
-                
-                const maxScroll = wrapperWidth - carouselWidth;
-
-                if (currentPosition < maxScroll) {
-                    currentPosition = maxScroll;
-                }
-
-                carousel.style.transform = `translateX(${currentPosition}px)`;
-            });
+            carousel.style.transform = `translateX(${currentPosition}px)`;
         });
-
-    </script>
+    });
+</script>
 </body>
 </html>
