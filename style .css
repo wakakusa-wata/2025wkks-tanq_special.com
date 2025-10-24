@@ -176,11 +176,16 @@ main {
     box-shadow: none;
 }
 
-/* コンテンツの中央配置とタイポグラフィの調整 */
 .hero-content h1 {
     font-size: 3.5rem; 
-    /* ★★ 修正A: 文字色を濃い緑に変更 ★★ */
-    color: #38761d; /* 若草色よりも深みのある緑 */
+    /* ★★ 修正A: 文字色を元に戻し、白のシャドウを追加 ★★ */
+    color: #1e1e1e; /* 墨色（元々使っていた濃い色） */
+    text-shadow: 
+        2px 0 0 #ffffff,   /* 右 */
+        -2px 0 0 #ffffff,  /* 左 */
+        0 2px 0 #ffffff,   /* 下 */
+        0 -2px 0 #ffffff;  /* 上 */ 
+    
     font-family: 'Yu Mincho', 'Hiragino Mincho ProN', serif; 
     margin-bottom: 0.5rem;
     letter-spacing: 0.1em; 
