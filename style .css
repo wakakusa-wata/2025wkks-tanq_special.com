@@ -167,9 +167,9 @@ main {
 .hero-content {
     position: relative;
     z-index: 10; 
-    color: #1e1e1e; 
+    /* color: #1e1e1e; は削除またはコメントアウト */ 
     
-    /* ★★ 修正3: 文字の背景色を削除（透明化） ★★ */
+    /* 修正3: 文字の背景色を削除（透明化）は維持 */
     padding: 0;
     background-color: transparent; 
     border-radius: 0;
@@ -179,7 +179,8 @@ main {
 /* コンテンツの中央配置とタイポグラフィの調整 */
 .hero-content h1 {
     font-size: 3.5rem; 
-    color: #1e1e1e; 
+    /* ★★ 修正A: 文字色を濃い緑に変更 ★★ */
+    color: #38761d; /* 若草色よりも深みのある緑 */
     font-family: 'Yu Mincho', 'Hiragino Mincho ProN', serif; 
     margin-bottom: 0.5rem;
     letter-spacing: 0.1em; 
@@ -187,7 +188,8 @@ main {
 
 .hero-content p {
     font-size: 1.5rem;
-    color: #505050;
+    /* ★★ 修正B: 文字色を濃い緑に変更 ★★ */
+    color: #38761d; /* 若草色よりも深みのある緑 */
     margin-bottom: 30px;
     font-weight: 300;
 }
