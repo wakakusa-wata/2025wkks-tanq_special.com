@@ -490,3 +490,87 @@ main {
 .submit-button:hover {
     background-color: #548b2f;
 }
+/* ================================================= */
+/* 探究テーマセクション (Projects Section) の追加スタイル */
+/* ================================================= */
+
+.projects-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.projects-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e1e1e;
+    margin-bottom: 5px;
+}
+
+.projects-section .lead-text {
+    font-size: 1.1rem;
+    color: #505050;
+    margin-bottom: 40px;
+}
+
+/* 個々のテーマカードのデザインを定義します */
+.project-card {
+    /* 既存のカルーセルCSS (margin-right: 30px; flex-shrink: 0; width: 300px;) は生かす */
+    
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden; /* 画像などが入る可能性を考慮 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* 軽い影で浮遊感を出す */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+    height: 100%; /* Flexアイテム内で高さを揃える */
+}
+
+.project-card:hover {
+    transform: translateY(-5px); /* マウスオーバーで少し持ち上がる */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.project-card a {
+    text-decoration: none;
+    color: #1e1e1e;
+    display: block;
+    padding: 20px;
+}
+
+.project-card .theme-category {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #38761d; /* 若草色 */
+    margin-bottom: 10px;
+    display: inline-block;
+    border-bottom: 2px solid #e6ffe6; /* 淡い若草色の下線 */
+    padding-bottom: 3px;
+}
+
+.project-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 0 0 15px 0;
+    color: #1e1e1e;
+}
+
+.project-card .detail-link {
+    font-size: 0.9rem;
+    color: #548b2f;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+}
+.project-card .detail-link:hover {
+    text-decoration: underline;
+}
+
+/* 全体テーマ表示リンク */
+.all-projects-link {
+    text-align: center;
+    margin-top: 30px;
+}
