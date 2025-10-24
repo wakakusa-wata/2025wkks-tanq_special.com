@@ -169,12 +169,11 @@ main {
     z-index: 10; 
     color: #1e1e1e; 
     
-    /* ★★ 修正: 文字部分にのみ背景を追加して視認性を確保 ★★ */
-    padding: 20px 40px;
-    background-color: rgba(255, 255, 255, 0.85); /* 半透明の白（少し明るく） */
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    /* ---------------------------------------------------- */
+    /* ★★ 修正3: 文字の背景色を削除（透明化） ★★ */
+    padding: 0;
+    background-color: transparent; 
+    border-radius: 0;
+    box-shadow: none;
 }
 
 /* コンテンツの中央配置とタイポグラフィの調整 */
