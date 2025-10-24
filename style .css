@@ -128,6 +128,8 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
+    /* ★★ 修正1: 画像の余白を埋めるための背景色を追加 ★★ */
+    background-color: #f9fff9; 
 }
 
 .hero-slide {
@@ -140,13 +142,15 @@ main {
     opacity: 0; 
     transition: opacity 1.5s ease-in-out; 
     
-    background-size: cover; 
-    background-position: center top; /* 画像の上部中央を優先して表示 */
+    /* ★★ 修正2: contain に変更し、見切れを完全に解消 ★★ */
+    background-size: contain; 
+    /* ★★ 修正3: 画像を中央に配置 ★★ */
+    background-position: center center; 
     background-repeat: no-repeat;
 
-    /* オーバーレイの設定 (文字の視認性向上) */
-    background-color: rgba(230, 255, 230, 0.8); /* 若草色のオーバーレイ */
-    background-blend-mode: overlay; 
+    /* ★★ 修正4: contain 使用時に不自然になるため、ブレンドモードとオーバーレイを削除 ★★ */
+    /* background-color: rgba(230, 255, 230, 0.8); */ 
+    /* background-blend-mode: overlay; */
 }
 
 .hero-slide.active {
