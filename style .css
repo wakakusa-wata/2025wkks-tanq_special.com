@@ -135,12 +135,11 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    /* ★★ 修正1: 画像の余白を埋めるための背景色を追加 ★★ */
-    background-color: #f9fff9; 
+    /* ★★ 修正1: 画像の余白の色を全体的な薄緑のトーンに寄せる ★★ */
+    background-color: #f0fff0; /* 非常に薄い緑（または白系） */
 }
 
 .hero-slide {
-    /* ★★ 修正：背景画像とオーバーレイの設定を統合し、画像を表示させる ★★ */
     position: absolute;
     top: 0;
     left: 0;
@@ -149,15 +148,15 @@ main {
     opacity: 0; 
     transition: opacity 1.5s ease-in-out; 
     
-    /* ★★ 修正2: contain に変更し、見切れを完全に解消 ★★ */
     background-size: contain; 
-    /* ★★ 修正3: 画像を中央に配置 ★★ */
     background-position: center center; 
     background-repeat: no-repeat;
-
-    /* ★★ 修正4: contain 使用時に不自然になるため、ブレンドモードとオーバーレイを削除 ★★ */
-    /* background-color: rgba(230, 255, 230, 0.8); */ 
-    /* background-blend-mode: overlay; */
+    
+    /* ★★ 修正2: 薄緑のオーバーレイを復活（文字の視認性のため濃度を調整） ★★ */
+    /* 以前の値を参考に、少し薄く調整 */
+    background-color: rgba(230, 255, 230, 0.6); 
+    /* 背景画像と背景色をブレンドしてトーンを統一 */
+    background-blend-mode: multiply; 
 }
 
 .hero-slide.active {
