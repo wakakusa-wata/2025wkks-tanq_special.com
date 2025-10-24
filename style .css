@@ -193,8 +193,14 @@ main {
 
 .hero-content p {
     font-size: 1.5rem;
-    /* ★★ 修正B: 文字色を濃い緑に変更 ★★ */
-    color: #38761d; /* 若草色よりも深みのある緑 */
+    /* ★★ 修正B: 文字色を元に戻し、白のシャドウを追加 ★★ */
+    color: #505050; /* 元々使っていた少し薄い色 */
+    text-shadow: 
+        1px 0 0 #ffffff, 
+        -1px 0 0 #ffffff,
+        0 1px 0 #ffffff,
+        0 -1px 0 #ffffff;
+        
     margin-bottom: 30px;
     font-weight: 300;
 }
