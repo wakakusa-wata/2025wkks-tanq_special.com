@@ -340,11 +340,13 @@ main {
 }
 
 /* ================================================= */
-/* ニュースセクション */
+/* ニュースセクションのレイアウトとデザイン */
 /* ================================================= */
+
 .news-section {
     padding: 60px 0;
-    background-color: #f9fff9;
+    /* 背景を白に近い若草色にし、コンテンツとの区切りを出す */
+    background-color: #f9fff9; 
 }
 
 .news-section h2 {
@@ -354,34 +356,39 @@ main {
     margin-bottom: 30px;
 }
 
+/* ニュースリスト全体 */
 .news-list {
-    list-style: none;
+    list-style: none; /* 箇条書きの点を削除 */
     padding: 0;
     margin: 0;
-    border-top: 1px solid #e0e0e0;
+    /* 記事リストの開始を示す上部ライン */
+    border-top: 1px solid #e0e0e0; 
 }
 
+/* 個々のニュースアイテムのリンク */
 .news-item a {
-    display: flex;
-    align-items: center;
+    display: flex; /* 横並びレイアウト（日付、カテゴリ、タイトル） */
+    align-items: center; /* 垂直方向の中央揃え */
     padding: 15px 0;
     text-decoration: none;
     color: #1e1e1e;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0; /* 記事ごとの区切りライン */
     transition: background-color 0.3s;
 }
 
 .news-item a:hover {
-    background-color: #e6ffe6;
+    background-color: #e6ffe6; /* ホバー時に薄い若草色のフィードバック */
 }
 
+/* 日付 */
 .news-item time {
-    flex-shrink: 0;
+    flex-shrink: 0; /* 縮まないように固定 */
     font-size: 0.9rem;
     color: #505050;
-    width: 90px;
+    width: 90px; /* 幅を固定 */
 }
 
+/* カテゴリバッジの共通スタイル */
 .news-item .category {
     flex-shrink: 0;
     font-size: 0.8rem;
@@ -394,24 +401,27 @@ main {
     text-align: center;
 }
 
+/* カテゴリごとの配色 */
 .news-item .type-event {
-    background-color: #d9534f; /* 赤系 */
+    background-color: #d9534f; /* イベント: 赤系 */
 }
 
 .news-item .type-progress {
-    background-color: #f0ad4e; /* 黄色系 */
+    background-color: #f0ad4e; /* 進捗: 黄色系 */
 }
 
 .news-item .type-info {
-    background-color: #38761d; /* 若草色系 */
+    background-color: #38761d; /* 一般: 若草色系 */
 }
 
+/* ニュースタイトル */
 .news-item .news-title {
     margin: 0;
     font-size: 1rem;
-    flex-grow: 1;
+    flex-grow: 1; /* 残りのスペースを全て使用 */
 }
 
+/* お知らせ一覧へのリンク */
 .all-news-link {
     text-align: center;
     margin-top: 40px;
