@@ -28,6 +28,7 @@ main {
     margin: 0 auto;
     padding: 0 30px;
 }
+
 /* ==================================== */
 /* ヘッダーセクション */
 /* ==================================== */
@@ -86,112 +87,125 @@ main {
 }
 
 /* デスクトップでは通常のナビゲーションを表示するが、モバイルファーストでハンバーガーを優先 */
-/* 例: デスクトップのメニューリストを非表示にする (モバイルファーストの場合) */
 #main-nav {
     display: none; 
 }
 @media (min-width: 992px) {
-    /* デスクトップの場合、ハンバーガーメニューを非表示にしても良い */
-    /* .hamburger-menu { display: none; } */
-    /* #main-nav { display: block; } */
-    /* .nav-links { display: flex; list-style: none; margin: 0; padding: 0; } */
-    /* .nav-links li a { margin-left: 20px; color: #1e1e1e; text-decoration: none; } */
+    /* デスクトップメニューのスタイルをここに追加 */
+    .hamburger-menu { display: none; }
+    #main-nav { display: block; }
+    .nav-links { display: flex; list-style: none; margin: 0; padding: 0; }
+    .nav-links li a { 
+        margin-left: 20px; 
+        color: #1e1e1e; 
+        text-decoration: none; 
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+    .nav-links li a:hover {
+        color: #38761d;
+    }
 }
+
+
 /* ==================================== */
 /* ヒーローセクション (スライドショー) */
 /* ==================================== */
 .hero-section {
     position: relative; /* 子要素の絶対配置の基準 */
-    /* ビューポート全体の高さを利用し、インパクトを最大化 */
     height: 80vh; 
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 0 20px;
-    
-    /* スライドショーコンテナがヒーローセクションを完全に覆うため、ここに背景画像は不要 */
 }
 
 /* スライドショー全体 (画像とテキストのコントラスト調整用) */
 .slideshow-container {
-    /* 親の.hero-section全体を覆うように絶対配置 */
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    
-    /* ★★ 修正：オーバーレイの色を、スライドショーコンテナに設定する（画像を薄く見せるため） ★★ */
-    /* background: rgba(230, 255, 230, 0.8); の設定はhero-slideに移します */
 }
 
 .hero-slide {
-    /* 全てのスライドを重ねて配置 */
+    /* ★★ 修正：背景画像とオーバーレイの設定を統合し、画像を表示させる ★★ */
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0; /* 最初は全て非表示 */
-    transition: opacity 1.5s ease-in-out; /* フェードアニメーション */
+    opacity: 0; 
+    transition: opacity 1.5s ease-in-out; 
     
-    /* 背景画像の設定 */
-    background-size: cover; /* 画像をセクション全体に覆わせる */
+    background-size: cover; 
     background-position: center top; /* 画像の上部中央を優先して表示 */
     background-repeat: no-repeat;
 
-    /* ★★ 修正：背景画像の上に薄いオーバーレイを重ねる設定 ★★ */
-    /* 画像を暗くし、その上の文字を読みやすくする */
+    /* オーバーレイの設定 (文字の視認性向上) */
     background-color: rgba(230, 255, 230, 0.8); /* 若草色のオーバーレイ */
-    background-blend-mode: overlay; /* 背景画像と背景色を合成 */
+    background-blend-mode: overlay; 
 }
 
 .hero-slide.active {
-    opacity: 1; /* 表示中のスライドのみ不透明にする */
+    opacity: 1; 
 }
 
 /* ヒーローコンテンツ（文字）を画像より前面に表示 */
 .hero-content {
     position: relative;
-    z-index: 10; /* 画像よりも上に表示 */
+    z-index: 10; 
     color: #1e1e1e; 
 }
-/* ... (以降の hero-content h1, p, cta-button のスタイルはそのまま維持) ... */
-/* ================================================= */
-/* ヒーロースライドショーの調整 (見切れの軽減) */
-/* ================================================= */
 
-.hero-slide {
-    /* 全てのスライドを重ねて配置 */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0; /* 最初は全て非表示 */
-    transition: opacity 1.5s ease-in-out; /* フェードアニメーション */
-    
-    /* 背景画像の設定 */
-    background-size: cover; /* 画像をセクション全体に覆わせる */
-    
-    /* ★★ 修正点1: 画像の表示位置を「上部中央」に固定 ★★ */
-    /* これにより、写真の上端（例：空、ロゴ、人物の上半身など）が見切れにくくなります */
-    background-position: center top; 
-    
-    background-repeat: no-repeat;
-    
-    /* オーバーレイのグラデーション（slideshow-containerと合成） */
-    background-blend-mode: overlay; 
+/* コンテンツの中央配置とタイポグラフィの調整 */
+.hero-content h1 {
+    font-size: 3.5rem; 
+    color: #1e1e1e; 
+    font-family: 'Yu Mincho', 'Hiragino Mincho ProN', serif; 
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.1em; 
 }
 
-.hero-slide.active {
-    opacity: 1; /* 表示中のスライドのみ不透明にする */
+.hero-content p {
+    font-size: 1.5rem;
+    color: #505050;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+/* CTA (Call to Action) ボタンのスタイリング */
+.cta-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #38761d; /* 若草色よりも深みのある緑 */
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:hover {
+    background-color: #548b2f; 
+}
+
+/* スマートフォン向けの調整 (レスポンシブ対応) */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero-content p {
+        font-size: 1.2rem;
+    }
 }
 
 
 /* ================================================= */
-/* 探究テーマセクション (Projects Section) のスタイル */
+/* 探究テーマセクション (Projects Section) */
 /* ================================================= */
 
 .projects-section {
@@ -206,7 +220,7 @@ main {
     margin-bottom: 5px;
 }
 
-.projects-section .section-lead { /* クラス名修正: lead-text -> section-lead */
+.projects-section .section-lead { 
     font-size: 1.1rem;
     color: #505050;
     margin-bottom: 40px;
@@ -214,30 +228,25 @@ main {
 
 /* カルーセル全体のラッパーとナビゲーションの調整 */
 .project-carousel-wrapper {
-    position: relative; /* ナビゲーションボタンを絶対配置するための基準 */
-    overflow: hidden; /* カルーセルからはみ出すコンテンツを非表示にする */
-    padding: 0 40px; /* 左右にナビゲーションボタン用のスペースを確保 */
+    position: relative; 
+    overflow: hidden; 
+    padding: 0 40px; 
 }
 
 /* 探究テーマカードを横一列に並べるコンテナ */
 .project-carousel {
-    display: flex; /* Flexboxでカードを横並びに */
-    /* スライドのアニメーションを滑らかにする */
+    display: flex; 
     transition: transform 0.5s ease-in-out; 
-    
-    /* スライドが途切れないように、幅を自動調整 */
     width: fit-content; 
-    padding-bottom: 20px; /* 下部にシャドウやドットナビゲーション用のスペース */
+    padding-bottom: 20px; 
 }
 
 /* 個々のテーマカードのレイアウト調整 */
 .project-card {
-    /* カード間の余白を確保し、幅を固定する */
     margin-right: 30px; 
-    flex-shrink: 0; /* カルーセル内でカードが縮まないようにする */
-    width: 300px; /* 固定幅を設定（ここで調整可能） */
+    flex-shrink: 0; 
+    width: 300px; 
     
-    /* 既存のスタイリング（box-shadow, hover効果など）はそのまま維持されます */
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
@@ -245,7 +254,7 @@ main {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: left;
-    height: 100%; /* Flexアイテム内で高さを揃える */
+    height: 100%; 
 }
 
 .project-card:hover {
@@ -260,13 +269,13 @@ main {
     padding: 20px;
 }
 
-.project-card .project-meta { /* クラス名修正: theme-category -> project-meta */
+.project-card .project-meta { 
     font-size: 0.8rem;
     font-weight: bold;
-    color: #38761d; /* 若草色 */
+    color: #38761d; 
     margin-bottom: 10px;
     display: inline-block;
-    border-bottom: 2px solid #e6ffe6; /* 淡い若草色の下線 */
+    border-bottom: 2px solid #e6ffe6; 
     padding-bottom: 3px;
 }
 
@@ -278,7 +287,7 @@ main {
     color: #1e1e1e;
 }
 
-.project-card .read-more-link { /* クラス名修正: detail-link -> read-more-link */
+.project-card .read-more-link { 
     font-size: 0.9rem;
     color: #548b2f;
     font-weight: 600;
@@ -302,7 +311,7 @@ main {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(56, 118, 29, 0.8); /* 若草色ベースの透明な背景 */
+    background-color: rgba(56, 118, 29, 0.8); 
     color: #ffffff;
     border: none;
     border-radius: 50%;
@@ -327,14 +336,14 @@ main {
     right: 0;
 }
 
+
 /* ================================================= */
-/* ニュースセクションのレイアウトとデザイン */
+/* ニュースセクション (index.html, news.html共通) */
 /* ================================================= */
 
 .news-section {
     padding: 60px 0;
-    /* 背景を白に近い若草色にし、コンテンツとの区切りを出す */
-    background-color: #f9fff9; 
+    background-color: #f9fff9;
 }
 
 .news-section h2 {
@@ -346,34 +355,33 @@ main {
 
 /* ニュースリスト全体 */
 .news-list {
-    list-style: none; /* 箇条書きの点を削除 */
+    list-style: none; 
     padding: 0;
     margin: 0;
-    /* 記事リストの開始を示す上部ライン */
     border-top: 1px solid #e0e0e0; 
 }
 
 /* 個々のニュースアイテムのリンク */
 .news-item a {
-    display: flex; /* 横並びレイアウト（日付、カテゴリ、タイトル） */
-    align-items: center; /* 垂直方向の中央揃え */
+    display: flex; 
+    align-items: center; 
     padding: 15px 0;
     text-decoration: none;
     color: #1e1e1e;
-    border-bottom: 1px solid #e0e0e0; /* 記事ごとの区切りライン */
+    border-bottom: 1px solid #e0e0e0; 
     transition: background-color 0.3s;
 }
 
 .news-item a:hover {
-    background-color: #e6ffe6; /* ホバー時に薄い若草色のフィードバック */
+    background-color: #e6ffe6; 
 }
 
 /* 日付 */
 .news-item time {
-    flex-shrink: 0; /* 縮まないように固定 */
+    flex-shrink: 0; 
     font-size: 0.9rem;
     color: #505050;
-    width: 90px; /* 幅を固定 */
+    width: 90px; 
 }
 
 /* カテゴリバッジの共通スタイル */
@@ -406,7 +414,7 @@ main {
 .news-item .news-title {
     margin: 0;
     font-size: 1rem;
-    flex-grow: 1; /* 残りのスペースを全て使用 */
+    flex-grow: 1; 
 }
 
 /* お知らせ一覧へのリンク */
@@ -415,6 +423,67 @@ main {
     margin-top: 40px;
 }
 
+
+/* ================================================= */
+/* ニュース・お知らせページ (news.html) の専用スタイル */
+/* ================================================= */
+
+/* ページタイトルセクション */
+.page-header {
+    /* ヘッダーの固定で隠れないように、上部にパディングを入れる */
+    padding-top: 100px; 
+    padding-bottom: 30px;
+    background-color: #f8f8f8; /* 背景色でメインコンテンツとの区切りを強調 */
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: #38761d; /* 若草色 */
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    color: #505050;
+}
+
+/* ページ内のニュースリストの調整（news.html用） */
+.news-page-content {
+    padding: 40px 0 80px 0;
+}
+
+/* ページネーション (ページ番号ナビゲーション) */
+.pagination {
+    text-align: center;
+    padding: 30px 0;
+    margin: 0;
+}
+
+.pagination a, .pagination span {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 0 5px;
+    text-decoration: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    color: #505050;
+    transition: all 0.2s;
+}
+
+.pagination a:hover {
+    background-color: #e6ffe6;
+    border-color: #38761d;
+}
+
+.pagination .current {
+    background-color: #38761d;
+    color: #ffffff;
+    border-color: #38761d;
+    font-weight: bold;
+}
+
+
 /* ================================================= */
 /* お問い合わせセクション (Contact CTA) のスタイル */
 /* ================================================= */
@@ -422,9 +491,8 @@ main {
 /* お問い合わせセクション全体 */
 .contact-section {
     padding: 80px 0;
-    /* 強いアイデンティティを確立するため、若草色を背景に使う */
     background-color: #38761d; 
-    color: #ffffff; /* 文字色は白でコントラストを最大化 */
+    color: #ffffff; 
     text-align: center;
 }
 
@@ -452,7 +520,6 @@ main {
 .contact-button {
     display: inline-block;
     padding: 15px 40px;
-    /* 背景色を白にして、若草色とのコントラストを出す */
     background-color: #ffffff; 
     color: #38761d;
     text-decoration: none;
@@ -464,17 +531,18 @@ main {
 }
 
 .contact-button:hover {
-    background-color: #f0fff0; /* ホバーで少し淡い若草色に */
+    background-color: #f0fff0; 
     transform: translateY(-2px);
 }
+
 
 /* ================================================= */
 /* フッター (Footer) のスタイル */
 /* ================================================= */
 footer {
     padding: 20px 0;
-    background-color: #1e1e1e; /* 濃い背景色 */
-    color: #cccccc; /* 薄いグレーの文字色 */
+    background-color: #1e1e1e; 
+    color: #cccccc; 
     font-size: 0.9rem;
     text-align: center;
 }
@@ -510,65 +578,4 @@ footer p {
     .footer-links a {
         margin: 0 5px;
     }
-}
-/* ================================================= */
-/* ニュース・お知らせページ (news.html) の専用スタイル */
-/* ================================================= */
-
-/* ページタイトルセクション */
-.page-header {
-    /* ヘッダーの固定で隠れないように、上部にパディングを入れる */
-    padding-top: 100px; 
-    padding-bottom: 30px;
-    background-color: #f8f8f8; /* 背景色でメインコンテンツとの区切りを強調 */
-    text-align: center;
-}
-
-.page-header h1 {
-    font-size: 2.5rem;
-    color: #38761d; /* 若草色 */
-    margin-bottom: 10px;
-}
-
-.page-header p {
-    font-size: 1.1rem;
-    color: #505050;
-}
-
-/* ページネーション (ページ番号ナビゲーション) */
-.pagination {
-    text-align: center;
-    padding: 30px 0;
-    margin: 0;
-}
-
-.pagination a, .pagination span {
-    display: inline-block;
-    padding: 8px 15px;
-    margin: 0 5px;
-    text-decoration: none;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    color: #505050;
-    transition: all 0.2s;
-}
-
-.pagination a:hover {
-    background-color: #e6ffe6;
-    border-color: #38761d;
-}
-
-.pagination .current {
-    background-color: #38761d;
-    color: #ffffff;
-    border-color: #38761d;
-    font-weight: bold;
-}
-
-/* ニュースリストのスタイルはindex.htmlで使用したものがそのまま適用されます */
-/* (.news-list, .news-item, .category など) */
-
-/* ページ内のニュースリストの調整 */
-.news-page-content {
-    padding: 40px 0 80px 0;
 }
