@@ -451,3 +451,64 @@ footer p {
         margin: 0 5px;
     }
 }
+/* ================================================= */
+/* ニュース・お知らせページ (news.html) の専用スタイル */
+/* ================================================= */
+
+/* ページタイトルセクション */
+.page-header {
+    /* ヘッダーの固定で隠れないように、上部にパディングを入れる */
+    padding-top: 100px; 
+    padding-bottom: 30px;
+    background-color: #f8f8f8; /* 背景色でメインコンテンツとの区切りを強調 */
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: #38761d; /* 若草色 */
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    color: #505050;
+}
+
+/* ページネーション (ページ番号ナビゲーション) */
+.pagination {
+    text-align: center;
+    padding: 30px 0;
+    margin: 0;
+}
+
+.pagination a, .pagination span {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 0 5px;
+    text-decoration: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    color: #505050;
+    transition: all 0.2s;
+}
+
+.pagination a:hover {
+    background-color: #e6ffe6;
+    border-color: #38761d;
+}
+
+.pagination .current {
+    background-color: #38761d;
+    color: #ffffff;
+    border-color: #38761d;
+    font-weight: bold;
+}
+
+/* ニュースリストのスタイルはindex.htmlで使用したものがそのまま適用されます */
+/* (.news-list, .news-item, .category など) */
+
+/* ページ内のニュースリストの調整 */
+.news-page-content {
+    padding: 40px 0 80px 0;
+}
