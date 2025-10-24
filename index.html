@@ -6,9 +6,13 @@
     <title>若草探求 | 地域課題に挑む、未来の知性たち</title>
     
     <link rel="stylesheet" href="style .css"> 
+    
+    <link rel="preload" as="image" href="tanq-2.png">
+    <link rel="preload" as="image" href="tanq-3.png">
+    <link rel="preload" as="image" href="tanq-4.png">
 </head>
 <body>
-    <body>
+    
     <header id="main-header">
         <div class="header-inner">
             <a href="index.html" class="site-logo">若草探求</a>
@@ -18,7 +22,8 @@
                     <li><a href="#projects">探究テーマ一覧</a></li>
                     <li><a href="news.html">ニュース・お知らせ</a></li>
                     <li><a href="about.html">若草探求とは</a></li>
-                    <li><a href="conect.html">お問い合わせ</a></li> </ul>
+                    <li><a href="conect.html">お問い合わせ</a></li>
+                </ul>
             </nav>
             
             <button id="menu-toggle" class="hamburger-menu">
@@ -28,31 +33,32 @@
             </button>
         </div>
     </header>
-    <section id="hero" class="hero-section">
-        <div class="slideshow-container">
-            <div class="hero-slide active" style="background-image: url('tanq-1.png');"></div>
-            <div class="hero-slide" style="background-image: url('tanq-2.png');"></div>
-            <div class="hero-slide" style="background-image: url('tanq-3.png');"></div>
-            <div class="hero-slide" style="background-image: url('tanq-4.png');"></div>
-        </div>
-        <div class="hero-content">
-            <h1>若草探求</h1>
-            <p>地域課題に挑む、未来の知性たち</p>
-            <a href="#projects" class="cta-button">探究テーマを見る</a>
-        </div>
-    </section>
     
-    </main>
+    <main>
+        
+        <section id="hero" class="hero-section">
+            <div class="slideshow-container">
+                <div class="hero-slide active" style="background-image: url('tanq-2.png');"></div>
+                <div class="hero-slide" style="background-image: url('tanq-3.png');"></div>
+                <div class="hero-slide" style="background-image: url('tanq-4.png');"></div>
+                <div class="hero-slide" style="background-image: url('tanq-2.png');"></div> </div>
+            <div class="hero-content">
+                <h1>若草探求</h1>
+                <p>地域課題に挑む、未来の知性たち</p>
+                <a href="#projects" class="cta-button">探究テーマを見る</a>
+            </div>
+        </section>
+        
         <section id="projects" class="projects-section">
             <div class="container">
                 <h2>若草探求プロジェクト</h2>
                 <p class="section-lead">中学3年生による、奈良の地域課題に切り込んだ個性豊かな探究テーマを紹介します。</p>
 
                 <div class="project-carousel-wrapper">
-                    <div class="project-carousel" id="project-carousel"> 
+                    <div class="project-carousel" id="project-carousel">    
                         
                         <div class="project-card">
-                            <a href="/projects/detail-001.html"> 
+                            <a href="/projects/detail-001.html">    
                                 <div class="card-image-placeholder img-1"></div>
                                 <div class="card-content">
                                     <h3>畠山製菓を近畿に進出させることはできるのか</h3>
@@ -63,7 +69,7 @@
                         </div>
 
                         <div class="project-card">
-                            <a href="/projects/detail-002.html"> 
+                            <a href="/projects/detail-002.html">    
                                 <div class="card-image-placeholder img-2"></div>
                                 <div class="card-content">
                                     <h3>サッカーで地域活性化できるのか</h3>
@@ -74,7 +80,7 @@
                         </div>
 
                         <div class="project-card">
-                            <a href="/projects/detail-003.html"> 
+                            <a href="/projects/detail-003.html">    
                                 <div class="card-image-placeholder img-3"></div>
                                 <div class="card-content">
                                     <h3>奈良にリニアを通すべきか</h3>
@@ -85,7 +91,7 @@
                         </div>
 
                         <div class="project-card">
-                            <a href="/projects/detail-004.html"> 
+                            <a href="/projects/detail-004.html">    
                                 <div class="card-image-placeholder img-4"></div>
                                 <div class="card-content">
                                     <h3>歴史的建造物の再建や保護に高い費用を掛ける必要があるのか</h3>
@@ -154,7 +160,6 @@
         </section>
         
     </main>
-
     <footer>
         <div class="container">
             <p>&copy; 2025 若草中学校 若草探求プロジェクト. All rights reserved.</p>
@@ -166,8 +171,6 @@
     </footer>
 
 <script>
-        // ⬇️ 既存のJSコードの順序を整理し、途切れた行を修正 ⬇️
-
         // ヒーロースライドショー機能
         function startHeroSlideshow() {
             const slides = document.querySelectorAll('.hero-slide');
@@ -194,21 +197,16 @@
         menuToggle.addEventListener('click', function() {
             mainNav.classList.toggle('is-open');
             this.classList.toggle('is-active');
-            // ★★ 修正箇所 ★★
-            document.body.classList.toggle('no-scroll'); // 'no-scroll'クラスのトグルを完了
+            document.body.classList.toggle('no-scroll'); 
         });
 
-        // メニューリンククリック時の自動クローズ機能
-        // ... (この下に既存のJSが続きます) ...
-        
         // ページが完全に読み込まれた後に実行
         document.addEventListener('DOMContentLoaded', () => {
              // ヒーロースライドショーの実行
             startHeroSlideshow();
             
-            // 既存のカルーセルJSのコード（`const carousel = document.getElementById('project-carousel');`から始まる部分）をここに続けてください。
-            
-             const navLinks = mainNav.querySelectorAll('a');
+            // ナビゲーションリンククリック時の自動クローズ
+            const navLinks = mainNav.querySelectorAll('a');
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     if (mainNav.classList.contains('is-open')) {
@@ -218,8 +216,6 @@
                     }
                 });
             });
-
-            // スライドショー機能の実行（startHeroSlideshowはDOMContentLoadedの最後に移動しました）
 
             // カルーセル機能の実行
             const carousel = document.getElementById('project-carousel');
