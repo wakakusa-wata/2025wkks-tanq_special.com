@@ -204,6 +204,35 @@
     </footer>
 
     <script>
+        // index.html の </body> の直前に、既存のカルーセルJSの後に追記
+
+// ヒーロースライドショー機能
+function startHeroSlideshow() {
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+    const intervalTime = 5000; // 5秒ごとに切り替え
+
+    function nextSlide() {
+        // 現在のスライドを非表示
+        slides[currentSlide].classList.remove('active');
+        
+        // 次のスライドへ
+        currentSlide = (currentSlide + 1) % slides.length;
+        
+        // 次のスライドを表示
+        slides[currentSlide].classList.add('active');
+    }
+
+    // ページロード時に最初のスライドを表示
+    if (slides.length > 0) {
+        slides[0].classList.add('active');
+        // タイマーを開始
+        setInterval(nextSlide, intervalTime);
+    }
+}
+
+// ページが完全に読み込まれた後に実行
+document.addEventListener('DOMContentLoaded', startHeroSlideshow);
         const menuToggle = document.getElementById('menu-toggle');
         const mainNav = document.getElementById('main-nav');
         // ハンバーガーメニューの開閉機能
